@@ -66,3 +66,53 @@ Check kubectl cluster info
 ```
 $ kubectl cluster-info
 ```
+
+
+
+##### Kubernates deployments
+
+
+Kubernetes Deployments
+
+Once you have a running Kubernetes cluster, you can deploy your containerized applications on top of it. To do so, you create a Kubernetes Deployment configuration. The Deployment instructs Kubernetes how to create and update instances of your application. Once you've created a Deployment, the Kubernetes master schedules mentioned application instances onto individual Nodes in the cluster.
+
+Once the application instances are created, a Kubernetes Deployment Controller continuously monitors those instances. If the Node hosting an instance goes down or is deleted, the Deployment controller replaces the instance with an instance on another Node in the cluster. This provides a self-healing mechanism to address machine failure or maintenance.
+
+
+We can create and manage a deployment using kubernates command line interface, Kubectl.
+
+
+Kubectl uses the kubernates API to interact with the cluster.
+
+
+
+Let's deploy a sample nodejs application
+
+
+```
+$ kubectl run kubernetes-bootcamp --image=gcr.io/google-samples/kubernetes-bootcamp:v1 --port=8080
+
+```
+
+#### View the deployments
+
+```
+$ kubectl get deployments
+
+```
+
+
+#### View our app
+
+
+```
+$ kubectl proxy
+```
+
+
+
+A Pod is a Kubernetes abstraction that represents a group of one or more application containers (such as Docker or rkt), and some shared resources for those containers. Those resources include:
+
+    Shared storage, as Volumes
+    Networking, as a unique cluster IP address
+    Information about how to run each container, such as the container image version or specific ports to use
